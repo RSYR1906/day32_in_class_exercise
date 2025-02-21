@@ -110,3 +110,8 @@ form {
     font-size: 12px;
     margin-top: 4px;
   }
+
+  .urgent-text{
+    color: red;
+    font-weight: bold;
+  }

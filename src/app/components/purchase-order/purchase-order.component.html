@@ -56,6 +56,13 @@
       </td>
     </tr>
     <tr>
+        <td>Urgent:</td>
+        <td>
+          <input type="checkbox" formControlName="urgent">
+          <span class="urgent-text">Check for urgent deliveries</span>
+        </td>
+      </tr>
+    <tr>
       <td>Availability:</td>
       <td>
         <label>
@@ -67,12 +74,6 @@
         <label>
           <input type="checkbox" [value]="'1600 - 2000'" (change)="onAvailabilityChange($event)" [disabled]="isUrgent()"> 1600 - 2000
         </label>
-      </td>
-    </tr>
-    <tr>
-      <td>Urgent:</td>
-      <td>
-        <input type="checkbox" formControlName="urgent">
       </td>
     </tr>
   </table>
