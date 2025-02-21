@@ -1,0 +1,112 @@
+/* General Form Styles */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Headings */
+  h2, h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  td, th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+  }
+  
+  th {
+    background-color: #f8f8f8;
+    text-align: left;
+  }
+  
+  /* Input Fields */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Override for checkboxes */
+  input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  /* Button Styles */
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Specific styles for remove buttons */
+  button.remove {
+    background-color: #dc3545;
+    padding: 5px 10px;
+  }
+  
+  button.remove:hover {
+    background-color: #c82333;
+  }
+  
+  /* Spacing for form controls outside table (like "Add Items" button) */
+  form > button[type="button"] {
+    margin: 10px auto;
+    display: block;
+  }
+  
+  /* Styling for the Purchase Items table */
+  table thead th {
+    font-weight: bold;
+  }
+  
+  table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Submit Button */
+  button[type="submit"] {
+    display: block;
+    width: 50%;
+    margin: 20px auto; /* auto left/right centers the element */
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }

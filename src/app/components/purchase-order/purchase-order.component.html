@@ -1,0 +1,118 @@
+<h2>Purchase Order</h2>
+
+<form [formGroup]="poForm" (submit)="processForm()">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td>
+        <input type="text" formControlName="name">
+        <div class="error" *ngIf="poForm.get('name')?.invalid && poForm.get('name')?.touched">
+          <small *ngIf="poForm.get('name')?.errors?.['required']">
+            Name is required.
+          </small>
+          <small *ngIf="poForm.get('name')?.errors?.['minlength']">
+            Name must be at least 3 characters long.
+          </small>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td>
+        <input type="text" formControlName="address">
+        <div class="error" *ngIf="poForm.get('address')?.invalid && poForm.get('address')?.touched">
+          <small *ngIf="poForm.get('address')?.errors?.['required']">
+            Address is required.
+          </small>
+          <small *ngIf="poForm.get('address')?.errors?.['minlength']">
+            Address must be at least 3 characters long.
+          </small>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>
+        <input type="email" formControlName="email">
+            <div class="error" *ngIf="poForm.get('email')?.invalid && poForm.get('email')?.touched">
+              <small *ngIf="poForm.get('email')?.errors?.['required']">
+                Email is required.
+              </small>
+              <small *ngIf="poForm.get('email')?.errors?.['email']">
+                Enter a valid email.
+              </small>
+            </div>
+          </td>
+    </tr>
+    <tr>
+      <td>Delivery Date:</td>
+      <td>
+        <input type="date" formControlName="deliveryDate">
+        <div class="error" *ngIf="poForm.get('deliveryDate')?.invalid && poForm.get('deliveryDate')?.touched">
+            <small *ngIf="poForm.get('deliveryDate')?.errors?.['required']">
+              Delivery Date is required.
+            </small>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Availability:</td>
+      <td>
+        <label>
+          <input type="checkbox" [value]="'0900 - 1200'" (change)="onAvailabilityChange($event)" [disabled]="isUrgent()"> 0900 - 1200
+        </label>
+        <label>
+          <input type="checkbox" [value]="'1200 - 1600'" (change)="onAvailabilityChange($event)" [disabled]="isUrgent()"> 1200 - 1600
+        </label>
+        <label>
+          <input type="checkbox" [value]="'1600 - 2000'" (change)="onAvailabilityChange($event)" [disabled]="isUrgent()"> 1600 - 2000
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <td>Urgent:</td>
+      <td>
+        <input type="checkbox" formControlName="urgent">
+      </td>
+    </tr>
+  </table>
+
+  <button type="button" (click)="addPurchaseItems()">Add Items</button>
+
+  @if (purchaseItems.controls.length > 0) {
+    <h3>Purchase Items</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="purchaseItems">
+        @for (col of purchaseItems.controls; let idx = $index; track col) {
+          <tr [formGroupName]="idx">
+            <td> {{ idx + 1 }}</td>
+            <td>
+              <input type="text" formControlName="itemName">
+            </td>
+            <td>
+              <input type="number" formControlName="quantity" min="1">
+            </td>
+            <td>
+              <input type="number" formControlName="unitPrice" min="0.01" step="0.01">
+            </td>
+            <td>
+              <button type="button" class="remove" (click)="removePurchaseItems(idx)">X</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <h3>No Items Added!</h3>
+  }
+  <button type="submit" (click)="processForm()" [disabled]="poForm.invalid">Submit</button>
+</form>
